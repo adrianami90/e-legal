@@ -29,7 +29,7 @@ const HomeIndex = ({
                         <h3>Our specialization</h3>
                         <h2>Practice areas</h2>
                         {Object.entries(groups).map(([group, items], idx) => (
-                            <PracticeAreaGroup key={idx} group={group} items={items}/>
+                            <PracticeAreaGroup key={idx} group={group} items={items} groupIdx={idx}/>
                         ))}
                     </div>
                 </section>
