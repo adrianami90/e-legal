@@ -40,9 +40,9 @@ exports.onCreateWebpackConfig = ({
                                  }) => {
     const { setWebpackConfig } = actions;
     setWebpackConfig({
-        externals: {
-            jquery: 'jQuery', // important: 'Q' capitalized
-        },
+        // externals: {
+        //     jquery: 'jQuery', // important: 'Q' capitalized
+        // },
         resolve: {
             fallback: {
                 fs: false,
