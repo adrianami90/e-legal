@@ -2,20 +2,12 @@ import React from 'react';
 
 import Header from './Header';
 import Helmet from 'react-helmet';
-import $ from 'jquery';
 import Footer from './Footer';
 
-let windowReady = false;
-let isNoviBuilder = false;
 const Template = ({ children }) => {
-    React.useEffect(() => {
-
-    }, []);
-
     return <div className='page text-center text-md-left animated'>
         <Helmet>
             <title>E-Legal</title>
-            <script src='/js/core.min.js'/>
             <script src='/js/script.js'/>
             <link rel='icon' href='/images/favicon.ico' type='image/x-icon'/>
             <meta name='format-detection' content='telephone=no'/>
