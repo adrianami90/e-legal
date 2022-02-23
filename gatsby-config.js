@@ -29,6 +29,13 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
+                name: `practiceAreas`,
+                path: `${__dirname}/src/_practice-areas`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
                 path: `${__dirname}/src/_blog/images`,
             },
         },

@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
-              path
+              path: ${__dirname}/src/_blog
             }
           }
         }
