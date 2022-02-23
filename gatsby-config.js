@@ -15,7 +15,7 @@ module.exports = {
                 background_color: '#663399',
                 theme_color: '#663399',
                 display: 'minimal-ui',
-                icon: 'src/assets/images/_blank.png', // This path is relative to the root of the site.
+                icon: 'src/assets/images/website-icon.png', // This path is relative to the root of the site.
             },
         },
         `gatsby-transformer-remark`,
@@ -40,6 +40,12 @@ module.exports = {
             resolve: 'gatsby-plugin-load-script',
             options: {
                 src: '/js/core.min.js'
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-load-script',
+            options: {
+                src: '/js/script.js'
             },
         },
     ],
