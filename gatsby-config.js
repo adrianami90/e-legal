@@ -36,12 +36,12 @@ module.exports = {
         'gatsby-plugin-offline',
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        // {
-        //     resolve: 'gatsby-plugin-load-script',
-        //     options: {
-        //         src: '/js/core.min.js'
-        //     },
-        // },
+        {
+            resolve: 'gatsby-plugin-load-script',
+            options: {
+                src: '/js/core.min.js'
+            },
+        },
         // {
         //     resolve: 'gatsby-plugin-load-script',
         //     options: {
