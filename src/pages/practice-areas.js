@@ -8,7 +8,6 @@ const HomeIndex = ({
                        data
                    }) => {
     const groups = {};
-    console.log(data);
 
     data.allMarkdownRemark.edges.forEach((item) => {
         groups[item.node.frontmatter.category] ? groups[item.node.frontmatter.category].push({
@@ -23,7 +22,7 @@ const HomeIndex = ({
     return (
         <Layout>
             <main className='page-content'>
-                <section><img className='img-responsive' src='images/practice-areas-01-1920x750.jpg' alt=''
+                <section><img className='img-responsive' src='/images/practice-areas-01-1920x750.jpg' alt=''
                               style={{ width: '100%' }}/></section>
                 <section className='section-50 section-sm-65 section-md-85 section-lg-95 section-xl-115 bg-transparent'>
                     <div className='container text-center'>

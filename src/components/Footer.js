@@ -6,7 +6,7 @@ const Footer = () => (
       <div className='container'>
         <div className='row row-40 justify-content-md-around justify-content-xl-start text-md-left'>
           <div className='col-xl-4 col-xxl-3 col-lg-5 col-md-7'><a href='index.html'><img
-              className='brand-footer' src='images/logo-inverse-398x97.png' alt='' width='199'
+              className='brand-footer' src='/images/logo-inverse-398x97.png' alt='' width='199'
               height='48'/><br/>
             <p>we will help anyone out</p></a>
             <p></p>

@@ -7,7 +7,7 @@ const HomeIndex = () => {
         <Layout>
             <main className='page-content'>
                 <section>
-                    <img className='img-responsive' src='images/about-01-1920x750.jpg' alt=''
+                    <img className='img-responsive' src='/images/about-01-1920x750.jpg' alt=''
                          style={{ width: '100%' }}/>
                 </section>
                 <section className='section-50 section-sm-70 section-md-80 section-lg-115 bg-transparent'>
@@ -94,7 +94,7 @@ const HomeIndex = () => {
                         <div className='row row-40 row-xl-50'>
                             <div className='col-md-6 col-lg-6 col-xl-6'>
                                 <div className='d-inline-block person-block'><img className='img-responsive'
-                                                                                  src='images/about-02-387x381.jpg'
+                                                                                  src='/images/about-02-387x381.jpg'
                                                                                   alt='' width='387' height='381'/>
                                     <h4 className='offset-top-20'>Richard Walker</h4>
                                     <p>While Richard is our most experienced paralegal, he’s also our client’s favorite
@@ -104,7 +104,7 @@ const HomeIndex = () => {
                             </div>
                             <div className='col-md-6 col-lg-6 col-xl-6'>
                                 <div className='d-inline-block person-block'><img className='img-responsive'
-                                                                                  src='images/about-03-387x381.jpg'
+                                                                                  src='/images/about-03-387x381.jpg'
                                                                                   alt='' width='387' height='381'/>
                                     <h4 className='offset-top-20'>Gerald Harrison</h4>
                                     <p>Gerald is Lesley’s brother, an Ivy League graduate and a proven lawyer, who’ve

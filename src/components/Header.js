@@ -5,6 +5,10 @@ import { useLocation } from '@reach/router';
 const Header = () => {
     const location = useLocation();
 
+    function isLocationActive(locationName) {
+        return location.pathname === locationName || location.pathname === locationName + '/' ? 'active' : '';
+    }
+
     return <header className='page-head'>
         <div className='rd-navbar-wrap'>
             <nav className='rd-navbar' data-layout='rd-navbar-fixed' data-sm-layout='rd-navbar-fixed'
@@ -31,8 +35,10 @@ const Header = () => {
                     </div>
                     <div className='rd-navbar-panel-aside'>
                         <ul className='list-inline list-inline-lg'>
-                            <li><a className='icon icon-white icon-xs fa-facebook' href='https://facebook.com' aria-label={'facebook'}/></li>
-                            <li><a className='icon icon-white icon-xs fa-linkedin' href='https://linkedin.com' aria-label={'linkedin'}/></li>
+                            <li><a className='icon icon-white icon-xs fa-facebook' href='https://facebook.com'
+                                   aria-label={'facebook'}/></li>
+                            <li><a className='icon icon-white icon-xs fa-linkedin' href='https://linkedin.com'
+                                   aria-label={'linkedin'}/></li>
                         </ul>
                         <div className='rd-navbar-search'><a className='rd-navbar-search-toggle'
                                                              data-rd-navbar-toggle='.rd-navbar-search'
@@ -44,24 +50,28 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='rd-navbar-inner rd-navbar-inner-bottom'><Link className='brand-name' to='/'><img
-                    src='images/logo-default-398x97.png' alt='' width='199' height='48'/></Link>
+                    src='/images/logo-default-398x97.png' alt='' width='199' height='48'/></Link>
                     <div className='rd-navbar-nav-wrap'>
                         <ul className='navbar-navigation rd-navbar-nav'>
-                            <li className={`navbar-navigation-root-item ${location.pathname === '/' && 'active'}`}>
+                            <li className={`navbar-navigation-root-item ${isLocationActive('/')}`}>
                                 <Link
                                     className='navbar-navigation-root-link' to='/'>Начало</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${location.pathname === '/about-us' && 'active'}`}><Link className='navbar-navigation-root-link'
-                                                                              to='/about-us'>За нас</Link>
+                            <li className={`navbar-navigation-root-item ${isLocationActive('/about-us')}`}>
+                                <Link className='navbar-navigation-root-link'
+                                      to='/about-us'>За нас</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${location.pathname === '/practice-areas' && 'active'}`}><Link className='navbar-navigation-root-link'
-                                                                              to='/practice-areas'>Правни услуги</Link>
+                            <li className={`navbar-navigation-root-item ${isLocationActive('/practice-areas')}`}>
+                                <Link className='navbar-navigation-root-link'
+                                      to='/practice-areas'>Правни услуги</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${location.pathname === '/posts' && 'active'}`}><Link className='navbar-navigation-root-link'
-                                                                              to='/posts'>Блог</Link>
+                            <li className={`navbar-navigation-root-item ${isLocationActive('/posts')}`}>
+                                <Link className='navbar-navigation-root-link'
+                                      to='/posts'>Блог</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${location.pathname === '/contacts' && 'active'}`}><Link className='navbar-navigation-root-link'
-                                                                              to='/contacts'>Контакти</Link>
+                            <li className={`navbar-navigation-root-item ${isLocationActive('/contacts')}`}>
+                                <Link className='navbar-navigation-root-link'
+                                      to='/contacts'>Контакти</Link>
                             </li>
                         </ul>
                     </div>
