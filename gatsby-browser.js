@@ -5,3 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+import './static/css/bootstrap.css';
+import './static/css/fonts.css';
+import './static/css/style.css';
