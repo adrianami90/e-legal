@@ -16,6 +16,8 @@ const Template = ({ children }) => {
             <link rel='stylesheet' href={withPrefix('/css/bootstrap.css')}/>
             <link rel='stylesheet' href={withPrefix('/css/fonts.css')}/>
             <link rel='stylesheet' href={withPrefix('/css/style.css')}/>
+            <script src={withPrefix('/js/core.min.js')} type="text/javascript" />
+            <script src={withPrefix('/js/script.js')} type="text/javascript" />
             <meta name='format-detection' content='telephone=no'/>
             <meta name='viewport'
                   content='width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
