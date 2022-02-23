@@ -9,7 +9,7 @@ const PostItem = ({ post }) => {
     return <article className='news-post news-post-reverse' key={post.node.id}>
         <div className='news-post-header'>
             <Link className='news-post-media' to={post.node.frontmatter.path}>
-                <Img className='img-responsive' fluid={featuredImgFluid} style={{ width: 640, height: 506 }}/>
+                <Img className='img-responsive' fluid={featuredImgFluid} style={{ width: '100%', height: 506 }}/>
             </Link>
             <ul className='label-list'>
                 <li><Link className='label-custom' to={post.node.frontmatter.path}>Mergers & Acquisitions</Link></li>
@@ -24,11 +24,6 @@ const PostItem = ({ post }) => {
                 <li><a className='h6 text-regular' href='#'>
                     <time dateTime='2020'>{post.node.frontmatter.date}</time>
                 </a></li>
-                <li>
-                    <p className='h6 text-regular text-content'>by <a
-                        className='text-content' href='single-post.html'>admin</a>
-                    </p>
-                </li>
             </ul>
         </div>
     </article>;
