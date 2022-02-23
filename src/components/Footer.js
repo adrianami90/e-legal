@@ -19,7 +19,7 @@ const Footer = () => (
             <ul className='list'>
               <li><Link to='/about-us'>За нас</Link></li>
               <li><Link to='/practice-areas'>Правни услуги</Link></li>
-              <li><Link to='/blog'>Блог</Link></li>
+              <li><Link to='/posts'>Блог</Link></li>
               <li><Link to='/contacts'>Контакти</Link></li>
             </ul>
           </div>
