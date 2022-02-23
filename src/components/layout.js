@@ -4,14 +4,28 @@ import Header from './Header';
 import Helmet from 'react-helmet';
 import Footer from './Footer';
 
+import '../assets/css/bootstrap.css';
+import '../assets/css/fonts.css';
+import '../assets/css/style.css';
+
 const regula = {};
+
+function magicTryLoad() {
+    setTimeout(() => {
+        if (window.$) {
+            magic(window.$, window.pageTransition, window.aCounter, window.aProgressCircle, window.Util);
+        } else {
+            magicTryLoad();
+        }
+    }, 100);
+}
 
 const Template = ({ children }) => {
     React.useEffect(() => {
-        magic(window.$);
+        magicTryLoad();
     }, []);
 
-    return <div className='page text-center text-md-left animated'>
+    return <div className='page text-center text-md-left'>
         <Helmet>
             <title>E-Legal</title>
             <script src={'/js/core.min.js'}/>
@@ -29,7 +43,7 @@ const Template = ({ children }) => {
         </Helmet>
         <Header/>
         {children}
-        <div className='preloader loaded'>
+        <div className='preloader'>
             <div className='preloader-body'>
                 <div className='cssload-container'>
                     <div className='cssload-speeding-wheel'/>
@@ -45,7 +59,7 @@ const Template = ({ children }) => {
 export default Template;
 
 
-const magic = ($) => {
+const magic = ($, pageTransition, aCounter, aProgressCircle, Util) => {
     var userAgent = navigator.userAgent.toLowerCase(),
         initialDate = new Date(),
 
@@ -88,143 +102,28 @@ const magic = ($) => {
             countdown: document.querySelectorAll('.countdown')
         };
 
-    /**
-     * @desc Check the element was been scrolled into the view
-     * @param {object} elem - jQuery object
-     * @return {boolean}
-     */
-    function isScrolledIntoView(elem) {
-        if (isNoviBuilder) return true;
-        return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
-    }
-
-    /**
-     * @desc Calls a function when element has been scrolled into the view
-     * @param {object} element - jQuery object
-     * @param {function} func - init function
-     */
-    function lazyInit(element, func) {
-        let scrollHandler = function () {
-            if ((!element.hasClass('lazy-loaded') && (isScrolledIntoView(element)))) {
-                func.call(element);
-                element.addClass('lazy-loaded');
+    if (plugins.preloader.length && !isNoviBuilder) {
+        pageTransition({
+            target: document.querySelector('.page'),
+            delay: 0,
+            duration: 150,
+            classIn: 'fadeIn',
+            classOut: 'fadeOut',
+            classActive: 'animated',
+            conditions: function (event, link) {
+                return link && !/(\#|javascript:void\(0\)|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
+            },
+            onTransitionStart: function (options) {
+                setTimeout(function () {
+                    plugins.preloader.removeClass('loaded');
+                }, options.duration * .75);
+            },
+            onReady: function () {
+                plugins.preloader.addClass('loaded');
+                windowReady = true;
             }
-        };
-
-        scrollHandler();
-        $window.on('scroll', scrollHandler);
+        });
     }
-
-// Initialize scripts that require a loaded window
-    $window.on('load', function () {
-        // Page loader & Page transition
-        // if (plugins.preloader.length && !isNoviBuilder) {
-        //     pageTransition({
-        //         target: document.querySelector('.page'),
-        //         delay: 0,
-        //         duration: 500,
-        //         classIn: 'fadeIn',
-        //         classOut: 'fadeOut',
-        //         classActive: 'animated',
-        //         conditions: function (event, link) {
-        //             return link && !/(\#|javascript:void\(0\)|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
-        //         },
-        //         onTransitionStart: function (options) {
-        //             setTimeout(function () {
-        //                 plugins.preloader.removeClass('loaded');
-        //             }, options.duration * .75);
-        //         },
-        //         onReady: function () {
-        //             plugins.preloader.addClass('loaded');
-        //             windowReady = true;
-        //         }
-        //     });
-        // }
-
-        // Counter
-        // if (plugins.counter) {
-        //     for (let i = 0; i < plugins.counter.length; i++) {
-        //         let
-        //             node = plugins.counter[i],
-        //             counter = aCounter({
-        //                 node: node,
-        //                 duration: node.getAttribute('data-duration') || 1000
-        //             }),
-        //             scrollHandler = (function () {
-        //                 if (Util.inViewport(this) && !this.classList.contains('animated-first')) {
-        //                     this.counter.run();
-        //                     this.classList.add('animated-first');
-        //                 }
-        //             }).bind(node),
-        //             blurHandler = (function () {
-        //                 this.counter.params.to = parseInt(this.textContent, 10);
-        //                 this.counter.run();
-        //             }).bind(node);
-        //
-        //         if (isNoviBuilder) {
-        //             node.counter.run();
-        //             node.addEventListener('blur', blurHandler);
-        //         } else {
-        //             scrollHandler();
-        //             window.addEventListener('scroll', scrollHandler);
-        //         }
-        //     }
-        // }
-
-        // Progress Circle
-        // if (plugins.progressCircle) {
-        //     for (let i = 0; i < plugins.progressCircle.length; i++) {
-        //         let
-        //             container = plugins.progressCircle[i],
-        //             counter = aCounter({
-        //                 node: container.querySelector('.progress-circle-counter'),
-        //                 duration: 500,
-        //                 onUpdate: function (value) {
-        //                     this.custom.bar.render(value * 3.6);
-        //                 }
-        //             });
-        //
-        //         counter.params.onComplete = counter.params.onUpdate;
-        //
-        //         counter.custom = {
-        //             container: container,
-        //             bar: aProgressCircle({ node: container.querySelector('.progress-circle-bar') }),
-        //             onScroll: (function () {
-        //                 if (Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) {
-        //                     this.run();
-        //                     this.custom.container.classList.add('animated');
-        //                 }
-        //             }).bind(counter),
-        //             onBlur: (function () {
-        //                 this.params.to = parseInt(this.params.node.textContent, 10);
-        //                 this.run();
-        //             }).bind(counter)
-        //         };
-        //
-        //         if (isNoviBuilder) {
-        //             counter.run();
-        //             counter.params.node.addEventListener('blur', counter.custom.onBlur);
-        //         } else {
-        //             counter.custom.onScroll();
-        //             window.addEventListener('scroll', counter.custom.onScroll);
-        //         }
-        //     }
-        // }
-
-        // Material Parallax
-        if (plugins.materialParallax.length) {
-            if (!isNoviBuilder && !isIE && !isMobile) {
-                plugins.materialParallax.parallax();
-            } else {
-                for (let i = 0; i < plugins.materialParallax.length; i++) {
-                    let $parallax = $(plugins.materialParallax[i]);
-
-                    $parallax.addClass('parallax-disabled');
-                    $parallax.css({ 'background-image': 'url(' + $parallax.data('parallax-img') + ')' });
-                }
-            }
-        }
-    });
 
     /**
      * Initialize All Scripts
@@ -239,8 +138,7 @@ const magic = ($) => {
          */
         function parseJSON(str) {
             try {
-                if (str) return JSON.parse(str);
-                else return {};
+                if (str) return JSON.parse(str); else return {};
             } catch (error) {
                 console.warn(error);
                 return {};
@@ -274,34 +172,31 @@ const magic = ($) => {
          * @param {object} swiper - swiper instance
          */
         function initCaptionAnimate(swiper) {
-            let
-                animate = function (caption) {
-                    return function () {
-                        let duration;
-                        if (duration = caption.getAttribute('data-caption-duration')) caption.style.animationDuration = duration + 'ms';
-                        caption.classList.remove('not-animated');
-                        caption.classList.add(caption.getAttribute('data-caption-animate'));
-                        caption.classList.add('animated');
-                    };
-                },
-                initializeAnimation = function (captions) {
-                    for (let i = 0; i < captions.length; i++) {
-                        let caption = captions[i];
-                        caption.classList.remove('animated');
-                        caption.classList.remove(caption.getAttribute('data-caption-animate'));
-                        caption.classList.add('not-animated');
-                    }
-                },
-                finalizeAnimation = function (captions) {
-                    for (let i = 0; i < captions.length; i++) {
-                        let caption = captions[i];
-                        if (caption.getAttribute('data-caption-delay')) {
-                            setTimeout(animate(caption), Number(caption.getAttribute('data-caption-delay')));
-                        } else {
-                            animate(caption)();
-                        }
-                    }
+            let animate = function (caption) {
+                return function () {
+                    let duration;
+                    if (duration = caption.getAttribute('data-caption-duration')) caption.style.animationDuration = duration + 'ms';
+                    caption.classList.remove('not-animated');
+                    caption.classList.add(caption.getAttribute('data-caption-animate'));
+                    caption.classList.add('animated');
                 };
+            }, initializeAnimation = function (captions) {
+                for (let i = 0; i < captions.length; i++) {
+                    let caption = captions[i];
+                    caption.classList.remove('animated');
+                    caption.classList.remove(caption.getAttribute('data-caption-animate'));
+                    caption.classList.add('not-animated');
+                }
+            }, finalizeAnimation = function (captions) {
+                for (let i = 0; i < captions.length; i++) {
+                    let caption = captions[i];
+                    if (caption.getAttribute('data-caption-delay')) {
+                        setTimeout(animate(caption), Number(caption.getAttribute('data-caption-delay')));
+                    } else {
+                        animate(caption)();
+                    }
+                }
+            };
 
             // Caption parameters
             swiper.params.caption = {
@@ -333,8 +228,7 @@ const magic = ($) => {
          * @param {object} c - carousel jQuery object
          */
         function initOwlCarousel(c) {
-            var aliaces = ['-', '-xs-', '-sm-', '-md-', '-lg-', '-xl-'],
-                values = [0, 480, 768, 992, 1200, 1600],
+            var aliaces = ['-', '-xs-', '-sm-', '-md-', '-lg-', '-xl-'], values = [0, 480, 768, 992, 1200, 1600],
                 responsive = {};
 
             for (var j = 0; j < values.length; j++) {
@@ -355,9 +249,7 @@ const magic = ($) => {
             // Enable custom pagination
             if (c.attr('data-dots-custom')) {
                 c.on('initialized.owl.carousel', function (event) {
-                    var carousel = $(event.currentTarget),
-                        customPag = $(carousel.attr('data-dots-custom')),
-                        active = 0;
+                    var carousel = $(event.currentTarget), customPag = $(carousel.attr('data-dots-custom')), active = 0;
 
                     if (carousel.attr('data-active')) {
                         active = parseInt(carousel.attr('data-active'), 10);
@@ -447,18 +339,10 @@ const magic = ($) => {
         function initLightGalleryItem(itemToInit, addClass) {
             if (!isNoviBuilder) {
                 $(itemToInit).lightGallery({
-                    selector: 'this',
-                    addClass: addClass,
-                    counter: false,
-                    youtubePlayerParams: {
-                        modestbranding: 1,
-                        showinfo: 0,
-                        rel: 0,
-                        controls: 0
-                    },
-                    vimeoPlayerParams: {
-                        byline: 0,
-                        portrait: 0
+                    selector: 'this', addClass: addClass, counter: false, youtubePlayerParams: {
+                        modestbranding: 1, showinfo: 0, rel: 0, controls: 0
+                    }, vimeoPlayerParams: {
+                        byline: 0, portrait: 0
                     }
                 });
             }
@@ -500,11 +384,8 @@ const magic = ($) => {
         function attachFormValidator(elements) {
             // Custom validator - phone number
             regula.custom({
-                name: 'PhoneNumber',
-                defaultMessage: 'Invalid phone number format',
-                validator: function () {
-                    if (this.value === '') return true;
-                    else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
+                name: 'PhoneNumber', defaultMessage: 'Invalid phone number format', validator: function () {
+                    if (this.value === '') return true; else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
                 }
             });
 
@@ -530,32 +411,22 @@ const magic = ($) => {
                 }
             }).regula('bind');
 
-            let regularConstraintsMessages = [
-                {
-                    type: regula.Constraint.Required,
-                    newMessage: 'The text field is required.'
-                },
-                {
-                    type: regula.Constraint.Email,
-                    newMessage: 'The email is not a valid email.'
-                },
-                {
-                    type: regula.Constraint.Numeric,
-                    newMessage: 'Only numbers are required'
-                },
-                {
-                    type: regula.Constraint.Selected,
-                    newMessage: 'Please choose an option.'
-                }
-            ];
+            let regularConstraintsMessages = [{
+                type: regula.Constraint.Required, newMessage: 'The text field is required.'
+            }, {
+                type: regula.Constraint.Email, newMessage: 'The email is not a valid email.'
+            }, {
+                type: regula.Constraint.Numeric, newMessage: 'Only numbers are required'
+            }, {
+                type: regula.Constraint.Selected, newMessage: 'Please choose an option.'
+            }];
 
 
             for (let i = 0; i < regularConstraintsMessages.length; i++) {
                 let regularConstraint = regularConstraintsMessages[i];
 
                 regula.override({
-                    constraintType: regularConstraint.type,
-                    defaultMessage: regularConstraint.newMessage
+                    constraintType: regularConstraint.type, defaultMessage: regularConstraint.newMessage
                 });
             }
         }
@@ -612,8 +483,7 @@ const magic = ($) => {
                     .addClass('has-error');
 
                 captcha.on('propertychange', function () {
-                    let $this = $(this),
-                        captchaToken = $this.find('.g-recaptcha-response').val();
+                    let $this = $(this), captchaToken = $this.find('.g-recaptcha-response').val();
 
                     if (captchaToken.length > 0) {
                         $this
@@ -769,24 +639,15 @@ const magic = ($) => {
          */
         if (isDesktop) {
             $().UItoTop({
-                easingType: 'easeOutQuart',
-                containerClass: 'ui-to-top fa fa-angle-up'
+                easingType: 'easeOutQuart', containerClass: 'ui-to-top fa fa-angle-up'
             });
         }
 
         // RD Navbar
         if (plugins.rdNavbar.length) {
-            let
-                navbar = plugins.rdNavbar,
-                aliases = {
-                    '-': 0,
-                    '-sm-': 576,
-                    '-md-': 768,
-                    '-lg-': 992,
-                    '-xl-': 1200,
-                    '-xxl-': 1600
-                },
-                responsive = {};
+            let navbar = plugins.rdNavbar, aliases = {
+                '-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600
+            }, responsive = {};
 
             for (let alias in aliases) {
                 let link = responsive[aliases[alias]] = {};
@@ -796,8 +657,7 @@ const magic = ($) => {
                 if (navbar.attr('data' + alias + 'auto-height')) link.autoHeight = navbar.attr('data' + alias + 'auto-height') === 'true';
                 if (navbar.attr('data' + alias + 'stick-up-offset')) link.stickUpOffset = navbar.attr('data' + alias + 'stick-up-offset');
                 if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
-                if (isNoviBuilder) link.stickUp = false;
-                else if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
+                if (isNoviBuilder) link.stickUp = false; else if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
             }
 
             plugins.rdNavbar.RDNavbar({
@@ -811,13 +671,10 @@ const magic = ($) => {
                         if (navbarSearch) {
                             navbarSearch.val('').trigger('propertychange');
                         }
-                    },
-                    onDropdownOver: function () {
+                    }, onDropdownOver: function () {
                         return !isNoviBuilder;
-                    },
-                    onUnstuck: function () {
-                        if (this.$clone === null)
-                            return;
+                    }, onUnstuck: function () {
+                        if (this.$clone === null) return;
 
                         let navbarSearch = this.$clone.find('.rd-search input');
 
@@ -834,24 +691,21 @@ const magic = ($) => {
         // RD Search
         if (plugins.search.length || plugins.searchResults) {
             let handler = 'bat/rd-search.php';
-            let defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' +
-                '<p>...#{token}...</p>' +
-                '<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
+            let defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' + '<p>...#{token}...</p>' + '<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
             let defaultFilter = '*.html';
 
             if (plugins.search.length) {
                 for (let i = 0; i < plugins.search.length; i++) {
-                    let searchItem = $(plugins.search[i]),
-                        options = {
-                            element: searchItem,
-                            filter: (searchItem.attr('data-search-filter')) ? searchItem.attr('data-search-filter') : defaultFilter,
-                            template: (searchItem.attr('data-search-template')) ? searchItem.attr('data-search-template') : defaultTemplate,
-                            live: (searchItem.attr('data-search-live')) ? searchItem.attr('data-search-live') : false,
-                            liveCount: (searchItem.attr('data-search-live-count')) ? parseInt(searchItem.attr('data-search-live'), 10) : 4,
-                            current: 0,
-                            processed: 0,
-                            timer: {}
-                        };
+                    let searchItem = $(plugins.search[i]), options = {
+                        element: searchItem,
+                        filter: (searchItem.attr('data-search-filter')) ? searchItem.attr('data-search-filter') : defaultFilter,
+                        template: (searchItem.attr('data-search-template')) ? searchItem.attr('data-search-template') : defaultTemplate,
+                        live: (searchItem.attr('data-search-live')) ? searchItem.attr('data-search-live') : false,
+                        liveCount: (searchItem.attr('data-search-live-count')) ? parseInt(searchItem.attr('data-search-live'), 10) : 4,
+                        current: 0,
+                        processed: 0,
+                        timer: {}
+                    };
 
                     let $toggle = $('.rd-navbar-search-toggle');
                     if ($toggle.length) {
@@ -1179,11 +1033,6 @@ const magic = ($) => {
             }
         }
 
-        // Google maps
-        if (plugins.maps.length) {
-            // lazyInit(plugins.maps, initMaps);
-        }
-
         /**
          * Owl carousel
          * @description Enables Owl carousel plugin
@@ -1213,9 +1062,7 @@ const magic = ($) => {
             let notCarouselItems = [];
 
             for (let z = 0; z < plugins.lightGalleryItem.length; z++) {
-                if (!$(plugins.lightGalleryItem[z]).parents('.owl-carousel').length &&
-                    !$(plugins.lightGalleryItem[z]).parents('.swiper-slider').length &&
-                    !$(plugins.lightGalleryItem[z]).parents('.slick-slider').length) {
+                if (!$(plugins.lightGalleryItem[z]).parents('.owl-carousel').length && !$(plugins.lightGalleryItem[z]).parents('.swiper-slider').length && !$(plugins.lightGalleryItem[z]).parents('.slick-slider').length) {
                     notCarouselItems.push(plugins.lightGalleryItem[z]);
                 }
             }
