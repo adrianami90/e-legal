@@ -21,6 +21,7 @@ function magicTryLoad() {
 
 const Template = ({ children }) => {
     React.useEffect(() => {
+        window.scrollTo(0, 0);
         magicTryLoad();
     }, []);
 
