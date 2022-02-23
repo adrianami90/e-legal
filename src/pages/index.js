@@ -11,8 +11,6 @@ const HomeIndex = ({
                            practiceAreas
                        },
                    }) => {
-
-    console.log(practiceAreas);
     return (
         <Layout>
             <main className='page-content'>

@@ -3,12 +3,12 @@ import React from 'react';
 import Header from './Header';
 import Helmet from 'react-helmet';
 import Footer from './Footer';
-import $ from 'jquery';
-import regula from 'regula';
+
+const regula = {};
 
 const Template = ({ children }) => {
     React.useEffect(() => {
-        magic($);
+        magic(window.$);
     }, []);
 
     return <div className='page text-center text-md-left animated'>
@@ -994,7 +994,7 @@ const magic = ($) => {
 
         // RD Input Label
         if (plugins.rdInputLabel.length) {
-            plugins.rdInputLabel.RDInputLabel();
+            // plugins.rdInputLabel.RDInputLabel();
         }
 
         // Regula
