@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { useLocation } from '@reach/router';
 import $ from 'jquery';
 
 const Header = () => {
+    const location = useLocation();
+
     React.useEffect(() => {
         const rdNavBar = $('.rd-navbar');
         const isNoviBuilder = false;
@@ -91,20 +94,20 @@ const Header = () => {
                     src='images/logo-default-398x97.png' alt='' width='199' height='48'/></Link>
                     <div className='rd-navbar-nav-wrap'>
                         <ul className='navbar-navigation rd-navbar-nav'>
-                            <li className={`navbar-navigation-root-item ${window.location.pathname === '/' && 'active'}`}>
+                            <li className={`navbar-navigation-root-item ${location.pathname === '/' && 'active'}`}>
                                 <Link
                                     className='navbar-navigation-root-link' to='/'>Начало</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${window.location.pathname === '/about-us' && 'active'}`}><Link className='navbar-navigation-root-link'
+                            <li className={`navbar-navigation-root-item ${location.pathname === '/about-us' && 'active'}`}><Link className='navbar-navigation-root-link'
                                                                               to='/about-us'>За нас</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${window.location.pathname === '/practice-areas' && 'active'}`}><Link className='navbar-navigation-root-link'
+                            <li className={`navbar-navigation-root-item ${location.pathname === '/practice-areas' && 'active'}`}><Link className='navbar-navigation-root-link'
                                                                               to='/practice-areas'>Правни услуги</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${window.location.pathname === '/posts' && 'active'}`}><Link className='navbar-navigation-root-link'
+                            <li className={`navbar-navigation-root-item ${location.pathname === '/posts' && 'active'}`}><Link className='navbar-navigation-root-link'
                                                                               to='/posts'>Блог</Link>
                             </li>
-                            <li className={`navbar-navigation-root-item ${window.location.pathname === '/contacts' && 'active'}`}><Link className='navbar-navigation-root-link'
+                            <li className={`navbar-navigation-root-item ${location.pathname === '/contacts' && 'active'}`}><Link className='navbar-navigation-root-link'
                                                                               to='/contacts'>Контакти</Link>
                             </li>
                         </ul>
