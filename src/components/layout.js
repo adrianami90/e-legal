@@ -35,6 +35,8 @@ const Template = ({ children }) => {
         </div>
         <div className='snackbars' id='form-output-global'/>
         <Footer/>
+        <script src='/js/core.min.js'/>
+        <script src='/js/script.js'/>
     </div>;
 };
 
