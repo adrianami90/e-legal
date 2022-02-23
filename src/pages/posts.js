@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import Posts from '../components/Posts';
+import PostItem from '../components/Posts/components/PostItem';
 
 const PostsPage = ({
                        data: {
@@ -12,13 +12,26 @@ const PostsPage = ({
                    }) => {
     return (
         <Layout>
-            <div id='main'>
-                <section id='two'>
-                    <h2>Posts</h2>
-
-                    <Posts posts={edges}/>
+            <main className='page-content'>
+                <section className='section-50 section-sm-65 section-md-85 section-xl-115 bg-transparent'>
+                    <div className='container'>
+                        <div className='row row-20'>
+                            <div className='col-xl-12 col-xxl-12'>
+                                <div className='inset-lg-right-45 inset-xl-right-0'>
+                                    {
+                                        edges.map((obj, i) => {
+                                            return (<PostItem
+                                                post={obj}
+                                                key={i}
+                                            />);
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-            </div>
+            </main>
         </Layout>
     );
 };
