@@ -14,6 +14,7 @@ const Template = ({ children }) => {
     return <div className='page text-center text-md-left animated'>
         <Helmet>
             <title>E-Legal</title>
+            <script src={'/js/core.min.js'}/>
             <link rel='icon' href='/images/favicon.ico' type='image/x-icon'/>
             <link rel='stylesheet' href={'/css/bootstrap.css'}/>
             <link rel='stylesheet' href={'/css/fonts.css'}/>
