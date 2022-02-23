@@ -24,13 +24,13 @@ const Header = () => {
                         <button className='rd-navbar-collapse-toggle' data-rd-navbar-toggle='.rd-navbar-panel-aside'>
                             <span/></button>
                         <div className='rd-navbar-brand'><Link className='brand-name' to='/'>Advoza</Link></div>
-                        <div className='rd-navbar-collapse-items'><span
-                            className='icon material-design-write20 icon-xs-big icon-primary'/><a
-                            href='mailto:#'>info@demolink.org</a></div>
-                        <div className='rd-navbar-call'><span
-                            className='icon icon-sm icon-rounded material-icons-local_phone icon-primary'/><a
-                            href='tel:#'>800-2345-6789</a><Link to='contacts'>
-                            Свържи се за безплатна първа консултация</Link>
+                        <div className='rd-navbar-call'>
+                            <span className='icon icon-sm icon-rounded material-design-write20 icon-primary'/>
+                            <a href='mailto:#' style={{ marginRight: 10 }}>info@demolink.org</a></div>
+                        <div className='rd-navbar-call'>
+                            <span className='icon icon-sm icon-rounded material-icons-local_phone icon-primary'/><a
+                            href='tel:#'>800-2345-6789</a>
+                            <Link to='contacts'>Заяви консултация</Link>
                         </div>
                     </div>
                     <div className='rd-navbar-panel-aside'>
@@ -40,12 +40,8 @@ const Header = () => {
                             <li><a className='icon icon-white icon-xs fa-linkedin' href='https://linkedin.com'
                                    aria-label={'linkedin'}/></li>
                         </ul>
-                        <div className='rd-navbar-search'><a className='rd-navbar-search-toggle'
-                                                             data-rd-navbar-toggle='.rd-navbar-search'
-                                                             href='#'><span/></a>
-                        </div>
                         <a href='tel:#'>800-2345-6789</a>
-                        <Link className='fixed-link' to='contacts'>Request a Callback</Link>
+                        <Link className='fixed-link' to='contacts'>Заяви консултация</Link>
                         <a href='mailto:#'>info@demolink.org</a>
                     </div>
                 </div>
