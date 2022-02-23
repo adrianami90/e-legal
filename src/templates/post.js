@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import Img from 'gatsby-image';
@@ -37,12 +37,14 @@ export default function Template({ data }) {
                                                 <h4>Share:</h4>
                                                 <div className='preffix-sm-left-15 offset-top-20 offset-sm-top-0'>
                                                     <div className='group group-xs'>
-                                                        <div><a
-                                                            className='icon-round-small icon-xs icon icon-primary fa-facebook'
-                                                            href='#'></a></div>
-                                                        <div><a
-                                                            className='icon-round-small icon-xs icon icon-primary fa-linkedin'
-                                                            href='#'></a></div>
+                                                        <div>
+                                                            <a className='icon-round-small icon-xs icon icon-primary fa-facebook'
+                                                               href='https://facebook.com' aria-label={'facebook'}/>
+                                                        </div>
+                                                        <div>
+                                                            <a className='icon-round-small icon-xs icon icon-primary fa-linkedin'
+                                                               href='https://linkedin.com' aria-label={'linkedin'}/>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

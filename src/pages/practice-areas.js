@@ -82,7 +82,7 @@ const HomeIndex = ({
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/_practice-areas/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/practice-areas/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           id

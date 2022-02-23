@@ -12,11 +12,11 @@ exports.createPages = async ({ actions, graphql }) => {
 
     const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/blog/"  }}) {
         edges {
           node {
             frontmatter {
-              path: ${__dirname}/src/_blog
+              path
             }
           }
         }

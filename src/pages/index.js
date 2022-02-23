@@ -139,7 +139,7 @@ const HomeIndex = ({
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/_blog/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/blog/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           id
@@ -160,7 +160,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    practiceAreas: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/_practice-areas/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
+    practiceAreas: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/practice-areas/"  }}, sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           id

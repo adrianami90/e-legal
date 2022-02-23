@@ -29,8 +29,8 @@ const Footer = () => (
               <p>4096 N Highland St, Arlington<br/>VA 32101, USA</p>
               <a href='mailto:#'>info@demolink.org</a>
               <ul className='list-inline list-inline-lg'>
-                <li><a className='icon icon-white icon-xs fa-facebook' href='#'/></li>
-                <li><a className='icon icon-white icon-xs fa-linkedin' href='#'/></li>
+                <li><a className='icon icon-white icon-xs fa-facebook' href='https://facebook.com' aria-label={'facebook'}/></li>
+                <li><a className='icon icon-white icon-xs fa-linkedin' href='https://linkedin.com' aria-label={'linkedin'}/></li>
               </ul>
             </address>
           </div>

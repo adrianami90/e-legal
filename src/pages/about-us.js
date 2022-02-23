@@ -49,7 +49,7 @@ const HomeIndex = () => {
                                 <div className='box-info box-info-count'>
                                     <div className='box-info-content'>
                                         <div className='count'>01.</div>
-                                        <h4><a href='#'>A Commitment to Excellence</a></h4>
+                                        <h4>A Commitment to Excellence</h4>
                                         <p>While the yearly number of cases which we take totals to an insurmountable
                                             number, unparalleled by any other Houston, TX law firm, our percentage of
                                             wins is record-breaking too… Just to drop some statistics here, in more than
@@ -62,7 +62,7 @@ const HomeIndex = () => {
                                 <div className='box-info box-info-count'>
                                     <div className='box-info-content'>
                                         <div className='count'>02.</div>
-                                        <h4><a href='#'>A Passion for Justice</a></h4>
+                                        <h4>A Passion for Justice</h4>
                                         <p>With our legal principles and our desire for justice being our first and
                                             foremost value, we always try to diversify the range of cases which we take
                                             on. That is perfectly shown when you notice that our civil/business cases
@@ -75,7 +75,7 @@ const HomeIndex = () => {
                                 <div className='box-info box-info-count'>
                                     <div className='box-info-content'>
                                         <div className='count'>03.</div>
-                                        <h4><a href='#'>An Urge for Fair Pricing</a></h4>
+                                        <h4>An Urge for Fair Pricing</h4>
                                         <p>On par with our passion for justice and excellence, the third work ethic
                                             which we stand by is the fair pricing. While we have the most winning cases
                                             as opposed to any other Houston, TX law firm, we’ve also got the lowest
@@ -96,7 +96,7 @@ const HomeIndex = () => {
                                 <div className='d-inline-block person-block'><img className='img-responsive'
                                                                                   src='images/about-02-387x381.jpg'
                                                                                   alt='' width='387' height='381'/>
-                                    <h4 className='offset-top-20'><a href='#'>Richard Walker</a></h4>
+                                    <h4 className='offset-top-20'>Richard Walker</h4>
                                     <p>While Richard is our most experienced paralegal, he’s also our client’s favorite
                                         one. Working for some time as a legal mediator, he knows how to approach people
                                         in different walks of life…</p>
@@ -106,7 +106,7 @@ const HomeIndex = () => {
                                 <div className='d-inline-block person-block'><img className='img-responsive'
                                                                                   src='images/about-03-387x381.jpg'
                                                                                   alt='' width='387' height='381'/>
-                                    <h4 className='offset-top-20'><a href='#'>Gerald Harrison</a></h4>
+                                    <h4 className='offset-top-20'>Gerald Harrison</h4>
                                     <p>Gerald is Lesley’s brother, an Ivy League graduate and a proven lawyer, who’ve
                                         worked both in NYC and Texas during his 45 years long career…</p>
                                 </div>

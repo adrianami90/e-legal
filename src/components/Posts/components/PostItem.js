@@ -21,9 +21,9 @@ const PostItem = ({ post }) => {
             <Link
                 className='btn btn-primary' to={post.node.frontmatter.path}>Read more</Link>
             <ul className='list-inline offset-top-30 offset-xl-top-80'>
-                <li><a className='h6 text-regular' href='#'>
+                <li><h6 className='h6 text-regular'>
                     <time dateTime='2020'>{post.node.frontmatter.date}</time>
-                </a></li>
+                </h6></li>
             </ul>
         </div>
     </article>;

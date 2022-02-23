@@ -75,8 +75,8 @@ const Header = () => {
                     </div>
                     <div className='rd-navbar-panel-aside'>
                         <ul className='list-inline list-inline-lg'>
-                            <li><a className='icon icon-white icon-xs fa-facebook' href='#'/></li>
-                            <li><a className='icon icon-white icon-xs fa-linkedin' href='#'/></li>
+                            <li><a className='icon icon-white icon-xs fa-facebook' href='https://facebook.com' aria-label={'facebook'}/></li>
+                            <li><a className='icon icon-white icon-xs fa-linkedin' href='https://linkedin.com' aria-label={'linkedin'}/></li>
                         </ul>
                         <div className='rd-navbar-search'><a className='rd-navbar-search-toggle'
                                                              data-rd-navbar-toggle='.rd-navbar-search'
