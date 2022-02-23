@@ -7,49 +7,49 @@ const Header = () => {
     const location = useLocation();
 
     React.useEffect(() => {
-        const rdNavBar = $('.rd-navbar');
-        const isNoviBuilder = false;
-        let navbar = rdNavBar, aliases = {
-            '-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600
-        }, responsive = {};
-
-        for (let alias in aliases) {
-            let link = responsive[aliases[alias]] = {};
-            if (navbar.attr('data' + alias + 'layout')) link.layout = navbar.attr('data' + alias + 'layout');
-            if (navbar.attr('data' + alias + 'device-layout')) link.deviceLayout = navbar.attr('data' + alias + 'device-layout');
-            if (navbar.attr('data' + alias + 'hover-on')) link.focusOnHover = navbar.attr('data' + alias + 'hover-on') === 'true';
-            if (navbar.attr('data' + alias + 'auto-height')) link.autoHeight = navbar.attr('data' + alias + 'auto-height') === 'true';
-            if (navbar.attr('data' + alias + 'stick-up-offset')) link.stickUpOffset = navbar.attr('data' + alias + 'stick-up-offset');
-            if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
-            if (isNoviBuilder) link.stickUp = false; else if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
-        }
-
-        rdNavBar.RDNavbar({
-            anchorNav: !isNoviBuilder,
-            stickUpClone: (rdNavBar.attr('data-stick-up-clone') && !isNoviBuilder) ? rdNavBar.attr('data-stick-up-clone') === 'true' : false,
-            responsive: responsive,
-            callbacks: {
-                onStuck: function () {
-                    let navbarSearch = this.$element.find('.rd-search input');
-
-                    if (navbarSearch) {
-                        navbarSearch.val('').trigger('propertychange');
-                    }
-                }, onDropdownOver: function () {
-                    return !isNoviBuilder;
-                }, onUnstuck: function () {
-                    if (this.$clone === null) return;
-
-                    let navbarSearch = this.$clone.find('.rd-search input');
-
-                    if (navbarSearch) {
-                        navbarSearch.val('').trigger('propertychange');
-                        navbarSearch.trigger('blur');
-                    }
-
-                }
-            }
-        });
+        // const rdNavBar = $('.rd-navbar');
+        // const isNoviBuilder = false;
+        // let navbar = rdNavBar, aliases = {
+        //     '-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600
+        // }, responsive = {};
+        //
+        // for (let alias in aliases) {
+        //     let link = responsive[aliases[alias]] = {};
+        //     if (navbar.attr('data' + alias + 'layout')) link.layout = navbar.attr('data' + alias + 'layout');
+        //     if (navbar.attr('data' + alias + 'device-layout')) link.deviceLayout = navbar.attr('data' + alias + 'device-layout');
+        //     if (navbar.attr('data' + alias + 'hover-on')) link.focusOnHover = navbar.attr('data' + alias + 'hover-on') === 'true';
+        //     if (navbar.attr('data' + alias + 'auto-height')) link.autoHeight = navbar.attr('data' + alias + 'auto-height') === 'true';
+        //     if (navbar.attr('data' + alias + 'stick-up-offset')) link.stickUpOffset = navbar.attr('data' + alias + 'stick-up-offset');
+        //     if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
+        //     if (isNoviBuilder) link.stickUp = false; else if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
+        // }
+        //
+        // rdNavBar.RDNavbar({
+        //     anchorNav: !isNoviBuilder,
+        //     stickUpClone: (rdNavBar.attr('data-stick-up-clone') && !isNoviBuilder) ? rdNavBar.attr('data-stick-up-clone') === 'true' : false,
+        //     responsive: responsive,
+        //     callbacks: {
+        //         onStuck: function () {
+        //             let navbarSearch = this.$element.find('.rd-search input');
+        //
+        //             if (navbarSearch) {
+        //                 navbarSearch.val('').trigger('propertychange');
+        //             }
+        //         }, onDropdownOver: function () {
+        //             return !isNoviBuilder;
+        //         }, onUnstuck: function () {
+        //             if (this.$clone === null) return;
+        //
+        //             let navbarSearch = this.$clone.find('.rd-search input');
+        //
+        //             if (navbarSearch) {
+        //                 navbarSearch.val('').trigger('propertychange');
+        //                 navbarSearch.trigger('blur');
+        //             }
+        //
+        //         }
+        //     }
+        // });
     }, []);
 
     return <header className='page-head'>
