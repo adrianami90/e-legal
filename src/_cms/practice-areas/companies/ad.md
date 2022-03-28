@@ -1,5 +1,5 @@
 ---
-title: Учредяване на AD
+title: Учредяване на търговски дружества
 price: 250
 description: some description for first post - list
 category: Търговски дружества
